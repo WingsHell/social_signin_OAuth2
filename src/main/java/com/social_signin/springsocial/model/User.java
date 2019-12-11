@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "users", uniqueConstraints = {
-        @UniqueConstraint(columnNames = "mail")
+        @UniqueConstraint(columnNames = "email")
 })
 public class User {
 
