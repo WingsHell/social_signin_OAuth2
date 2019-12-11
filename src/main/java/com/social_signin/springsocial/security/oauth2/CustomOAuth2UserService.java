@@ -4,6 +4,7 @@ import com.social_signin.springsocial.exception.OAuth2AuthenticationProcessingEx
 import com.social_signin.springsocial.model.AuthProvider;
 import com.social_signin.springsocial.model.User;
 import com.social_signin.springsocial.repository.UserRepository;
+import com.social_signin.springsocial.security.UserPrincipal;
 import com.social_signin.springsocial.security.oauth2.user.OAuth2UserInfo;
 import com.social_signin.springsocial.security.oauth2.user.OAuth2UserInfoFactory;
 import org.springframework.beans.factory.annotation.Autowired;

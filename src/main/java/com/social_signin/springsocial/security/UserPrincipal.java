@@ -1,4 +1,4 @@
-package com.social_signin.springsocial.security.oauth2;
+package com.social_signin.springsocial.security;
 
 import com.social_signin.springsocial.model.User;
 import org.springframework.security.core.GrantedAuthority;
