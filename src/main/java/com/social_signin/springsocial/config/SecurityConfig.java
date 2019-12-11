@@ -82,6 +82,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.headers().frameOptions().sameOrigin();
+        http.csrf().ignoringAntMatchers("/h2-console/**");
         http
                 .cors()
                     .and()
@@ -111,7 +113,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                         .permitAll()
                     .antMatchers("/auth/**", "/oauth2/**")
                         .permitAll()
-                    .antMatchers("/h2/**")
+                    .antMatchers("/h2-console/**")
                         .permitAll()
                     .anyRequest()
                         .authenticated()
