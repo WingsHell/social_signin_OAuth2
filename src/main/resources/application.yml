@@ -1,0 +1,58 @@
+server:
+  port: 8080
+  compression:
+    enabled: true
+    mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
+    min-response-size: 1024
+  http2:
+    enabled: true
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:test
+    driverClassName: org.h2.Driver
+    username: sa
+    password: sa
+    initialization-mode: always
+    platform: h2
+
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+
+  resources:
+    cache:
+      cachecontrol:
+        max-age: 120
+        must-revalidate: true
+
+  security:
+    oauth2:
+      client:
+        registration:
+          facebook:
+            clientId: 1085240598474497
+            clientSecret: 9213e2bb77fa0c08f55e4f4b54d2e329
+            redirectUriTemplate: "{baseUrl}/oauth2/callback/{registrationId}"
+            scope:
+              - email
+              - public_profile
+        provider:
+          facebook:
+            authorizationUri: https://www.facebook.com/v3.0/dialog/oauth
+            tokenUri: https://graph.facebook.com/v3.0/oauth/access_token
+            userInfoUri: https://graph.facebook.com/v3.0/me?fields=id,first_name,middle_name,last_name,name,email,verified,is_verified,picture.width(250).height(250)
+
+app:
+  auth:
+    tokenSecret: 926D96C90030DD58429D2751AC1BDBBC
+    tokenExpirationMsec: 864000000
+  oauth2:
+    # After successfully authenticating with the OAuth2 Provider,
+    # we'll be generating an auth token for the user and sending the token to the
+    # redirectUri mentioned by the frontend client in the /oauth2/authorize request.
+    # We're not using cookies because they won't work well in mobile clients.
+    authorizedRedirectUris:
+      - http://localhost:3000/oauth2/redirect
