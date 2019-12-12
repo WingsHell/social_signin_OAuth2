@@ -2,22 +2,22 @@ package com.social_signin.springsocial.payload;
 
 public class ApiResponse<T> {
 
-    private int status;
+    private boolean success;
     private String message;
-    private T result;
+    //private T result;
 
-    public ApiResponse(int status, String message, T result) {
-        this.status = status;
+    public ApiResponse(boolean success, String message) {
+        this.success = success;
         this.message = message;
-        this.result = result;
+        //this.result = result;
     }
 
-    public int getStatus() {
-        return status;
+    public boolean getSuccess() {
+        return success;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setSuccess(boolean success) {
+        this.success = success;
     }
 
     public String getMessage() {
@@ -28,11 +28,11 @@ public class ApiResponse<T> {
         this.message = message;
     }
 
-    public T getResult() {
+    /*public T getResult() {
         return result;
     }
 
     public void setResult(T result) {
         this.result = result;
-    }
+    }*/
 }
